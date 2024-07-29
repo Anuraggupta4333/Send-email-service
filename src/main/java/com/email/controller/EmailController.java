@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.*;
 public class EmailController {
     @Autowired
     private EmailService emailService;
-    @GetMapping("/welcome")
-    public String welcome(){
-        return "Hello this is my email api";
-    }
+//    @GetMapping("/welcome")
+//    public String welcome(){
+//        return "Hello this is my email api";
+//    }
 
     //api to send email
-    @RequestMapping(value = "/sendemail", method = RequestMethod.POST)
+//    @RequestMapping(value = "/sendemail", method = RequestMethod.POST)
+    @PostMapping("/sendemail")
     public ResponseEntity<?> sendEmail(@RequestBody EmailRequest emailRequest){
         System.out.println(emailRequest);
         boolean result=this.emailService.sendEmail(emailRequest.getSubject(), emailRequest.getMessage(), emailRequest.getTo());
